@@ -1,3 +1,7 @@
+# AI Cognitive Safety Guide
+
+### The questions people actually ask about using AI, answered with real research instead of vibes
+
 <div align="center">
 
 <img src="assets/banner.svg" alt="The Cognitive Ledger" width="100%"/>
@@ -5,6 +9,12 @@
 </div>
 
 <br/>
+
+This repo answers 8 questions people actually ask themselves about using AI — not "is AI good or bad," but the specific, uncomfortable ones: am I getting worse at this, would I bounce back, do I actually understand what I just shipped.
+
+Every answer is built from real studies — randomized trials, not vibes — and every answer says plainly when the evidence is strong and when it isn't.
+
+Pick the question that's actually bothering you and start there. Or read top to bottom. Either works.
 
 > [!NOTE]
 > *In Plato's Phaedrus, Theuth offers the gift of writing to King Thamus, promising it will make people wiser. Thamus refuses the compliment: those who learn to write, he warns, will stop exercising memory, trusting instead in marks made by another hand — they will seem wise without being wise.*
@@ -23,14 +33,14 @@ Where the evidence is strong, it says so. Where it's thin, contested, or still a
 
 ## Table of Contents
 
-1. [Am I actually getting worse at thinking, or does it just feel that way?](#1-am-i-actually-getting-worse-at-thinking-or-does-it-just-feel-that-way)
-2. [If I stopped using AI tomorrow, would I bounce back — or is some of this permanent?](#2-if-i-stopped-using-ai-tomorrow-would-i-bounce-back--or-is-some-of-this-permanent)
-3. [Do I actually understand what I just shipped, or did I just approve something that looked right?](#3-do-i-actually-understand-what-i-just-shipped-or-did-i-just-approve-something-that-looked-right)
-4. [Isn't this the same panic people had about calculators and Google? Could I be wrong to worry?](#4-isnt-this-the-same-panic-people-had-about-calculators-and-google-could-i-be-wrong-to-worry)
-5. [I'm already good at this — can I still lose it, or does experience protect me?](#5-im-already-good-at-this--can-i-still-lose-it-or-does-experience-protect-me)
-6. [Where's the actual line — how much AI help is fine, and when does it tip over?](#6-wheres-the-actual-line--how-much-ai-help-is-fine-and-when-does-it-tip-over)
-7. [Is there a real fix, or just vague advice like "use it in moderation"?](#7-is-there-a-real-fix-or-just-vague-advice-like-use-it-in-moderation)
-8. [How would I even know if I'm already in trouble?](#8-how-would-i-even-know-if-im-already-in-trouble)
+1. [Am I actually getting worse at thinking, or does it just feel that way?](#1-am-i-actually-getting-worse-at-thinking-or-does-it-just-feel-that-way) — *the evidence*
+2. [If I stopped using AI tomorrow, would I bounce back — or is some of this permanent?](#2-if-i-stopped-using-ai-tomorrow-would-i-bounce-back--or-is-some-of-this-permanent) — *reversibility*
+3. [Do I actually understand what I just shipped, or did I just approve something that looked right?](#3-do-i-actually-understand-what-i-just-shipped-or-did-i-just-approve-something-that-looked-right) — *the sharpest one*
+4. [Isn't this the same panic people had about calculators and Google? Could I be wrong to worry?](#4-isnt-this-the-same-panic-people-had-about-calculators-and-google-could-i-be-wrong-to-worry) — *the fair pushback*
+5. [I'm already good at this — can I still lose it, or does experience protect me?](#5-im-already-good-at-this--can-i-still-lose-it-or-does-experience-protect-me) — *for the experienced*
+6. [Where's the actual line — how much AI help is fine, and when does it tip over?](#6-wheres-the-actual-line--how-much-ai-help-is-fine-and-when-does-it-tip-over) — *the practical answer*
+7. [Is there a real fix, or just vague advice like "use it in moderation"?](#7-is-there-a-real-fix-or-just-vague-advice-like-use-it-in-moderation) — *what to actually do*
+8. [How would I even know if I'm already in trouble?](#8-how-would-i-even-know-if-im-already-in-trouble) — *the self-check*
 9. [Full Bibliography](#full-bibliography)
 
 ---
@@ -50,6 +60,8 @@ The mechanism is well understood even if the causal direction isn't fully settle
 There's also what researchers call *metacognitive laziness*: the habit of asking yourself "wait, does this actually make sense?" quietly switches off when a tool appears to have already done the checking. The problem isn't that you got a wrong answer. It's that the *habit of asking whether it's right* stops firing.
 
 So — is it real, or does it just feel that way? It's real enough that three separate research groups found it independently, using different methods and populations. That's not proof of catastrophe. It's proof worth paying attention to.
+
+[↑ Back to top](#table-of-contents) · [Next: If I stopped using AI tomorrow →](#2-if-i-stopped-using-ai-tomorrow-would-i-bounce-back--or-is-some-of-this-permanent)
 
 ---
 
@@ -77,6 +89,8 @@ So "would I bounce back" depends on what you do after you stop. If you stop usin
 
 The more practical version of your question: you probably haven't done anything irreversible. But "reversible" and "effortless to reverse" are different things.
 
+[↑ Back to top](#table-of-contents) · [Next: Do I actually understand what I just shipped? →](#3-do-i-actually-understand-what-i-just-shipped-or-did-i-just-approve-something-that-looked-right)
+
 ---
 
 ## 3. Do I actually understand what I just shipped, or did I just approve something that looked right?
@@ -98,8 +112,10 @@ The same dynamic shows up in software. Anthropic ran a randomized controlled tri
 
 A junior developer using AI assistance might ship working code on the first try and file it as "done" rather than "understood." Weeks later, when a related bug appears in production — in code that looks almost identical — they stare at it with no idea where to start. The comprehension gap only appears later, when something breaks.
 
-> [!WARNING]
-> The AI group in the Anthropic study was not meaningfully faster overall. Some participants spent up to a third of their time just composing prompts. The time savings people expect often don't show up in the data.
+> [!NOTE]
+> Worth knowing: the AI group in the Anthropic study was not meaningfully faster overall. Some participants spent up to a third of their time just composing prompts. The time savings people expect often don't show up in the data.
+
+[↑ Back to top](#table-of-contents) · [Next: Isn't this the same panic about calculators? →](#4-isnt-this-the-same-panic-people-had-about-calculators-and-google-could-i-be-wrong-to-worry)
 
 ---
 
@@ -127,6 +143,8 @@ Search engines landed somewhere in between. Sparrow et al. (2011) found people d
 
 So: you could be wrong to worry. You're not crazy to worry. The honest answer is that it depends on whether there's any practice loop left once the tool takes over.
 
+[↑ Back to top](#table-of-contents) · [Next: I'm already good at this — does experience protect me? →](#5-im-already-good-at-this--can-i-still-lose-it-or-does-experience-protect-me)
+
 ---
 
 ## 5. I'm already good at this — can I still lose it, or does experience protect me?
@@ -134,7 +152,7 @@ So: you could be wrong to worry. You're not crazy to worry. The honest answer is
 > [!IMPORTANT]
 > **Short answer:** Experience slows the decline and raises the bar for how much reliance is risky. It does not make you immune. In fact, the one study that directly tested this found that *more* experience meant a *bigger* drop in accuracy.
 
-Back to the physician study from question 3. The most counterintuitive finding wasn't the overall accuracy gap — it was what happened when the researchers broke down results by years of experience. Physicians with *more* years of experience showed a *bigger* drop in diagnostic accuracy when given subtly wrong AI suggestions: 16.6 percentage points vs. 9.1 percentage points for less experienced physicians.
+Same trial as question 3 — 44 physicians, 264 diagnostic cases. But look at what happened when the researchers split the results by years of experience. Physicians with *more* years of experience showed a *bigger* drop in diagnostic accuracy when given subtly wrong AI suggestions: 16.6 percentage points vs. 9.1 percentage points for less experienced physicians.
 
 Why? The leading hypothesis is that experienced clinicians have stronger pre-existing patterns of thought, which makes a plausible-but-wrong AI suggestion harder to override — it fits too neatly into established expectations. Less experienced physicians, having less anchored to prior judgment, scrutinized the AI output more carefully.
 
@@ -146,6 +164,8 @@ The Microsoft Research and Carnegie Mellon study (Lee et al., 2025, CHI 2025) fo
 A senior practitioner who treats AI as a fast typist for decisions she's already made gets faster on most days. The failure mode isn't a lack of skill. It's a good week making her stop checking. Automation bias — the more a tool proves reliable, the less you double-check it — was documented in aviation research decades before generative AI existed. Pilots using autopilot systems became less vigilant monitors of the aircraft, not because they were careless, but because trusting an automated system is itself a cognitive habit that reduces active checking.
 
 "I'm already good at this" is not evidence of immunity. It's evidence you haven't tested the assumption recently.
+
+[↑ Back to top](#table-of-contents) · [Next: Where's the actual line? →](#6-wheres-the-actual-line--how-much-ai-help-is-fine-and-when-does-it-tip-over)
 
 ---
 
@@ -171,6 +191,8 @@ So here's the line, as specifically as the evidence allows:
 - **Delegation without understanding** — handing the task over entirely, accepting what comes back without interrogating it — is where the cost accumulates, at every skill level.
 - **Structured engagement** — using AI output as material to interrogate, compare against your own attempt, or explain back — appears to preserve or build skill.
 - **Your skill level determines your buffer.** If you're still building the fundamentals, even "good" AI use carries higher risk of creating gaps you won't notice. If you're experienced, the risk is different: not that you won't learn, but that you'll stop checking.
+
+[↑ Back to top](#table-of-contents) · [Next: Is there a real fix? →](#7-is-there-a-real-fix-or-just-vague-advice-like-use-it-in-moderation)
 
 ---
 
@@ -205,6 +227,8 @@ Wang & Zhang (2026) found that mentally framing AI as a *collaborator you scruti
 
 > [!NOTE]
 > Two things that are plausible but not yet directly tested: dedicated AI-free blocks of deep work, and journaling your AI use afterward. Both are reasonable extensions of what we know about skill retention. Neither has been studied directly in this context. Sensible practices — not proven interventions.
+
+[↑ Back to top](#table-of-contents) · [Next: How would I know if I'm in trouble? →](#8-how-would-i-even-know-if-im-already-in-trouble)
 
 ---
 
@@ -246,6 +270,8 @@ The checklist above names the five patterns that show up most clearly in the res
 > [!NOTE]
 > One thing this document intentionally leaves out: creativity. A lot of people claim AI is making people less creative, and it's a reasonable worry. But none of the studies in this bibliography tested that directly, and the ones that touch on it are too confounded to draw clean conclusions. It's left out of the harder claims on purpose — not because it's unimportant.
 
+[↑ Back to top](#table-of-contents) · [Full Bibliography →](#full-bibliography)
+
 ---
 
 ## Full Bibliography
@@ -268,6 +294,8 @@ The checklist above names the five patterns that show up most clearly in the res
 - Wang & Zhang (2026). Research on AI-as-collaborator framing and critical engagement.
 
 *This is a living ledger. Corrections, stronger citations, and disagreements are welcome via issues and pull requests — an audit that can't be challenged isn't much of an audit.*
+
+None of this means stop using AI. It means noticing which of these eight questions you've been avoiding — that's usually the one worth sitting with.
 
 <br/>
 
