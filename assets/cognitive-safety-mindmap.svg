@@ -1,162 +1,192 @@
 <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="n"/>
-      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0"/>
-      <feComposite operator="over" in2="SourceGraphic"/>
+    <filter id="canvas5" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.08" numOctaves="5" seed="16" result="l"/>
+      <feColorMatrix in="l" type="matrix" values="0 0 0 0 0.13  0 0 0 0 0.09  0 0 0 0 0.06  0 0 0 0.27 0" result="t"/>
+      <feComposite in="t" in2="SourceGraphic" operator="over"/>
     </filter>
-    <linearGradient id="parch" x1="0" y1="0" x2=".3" y2="1">
-      <stop offset="0%" stop-color="#F2E8D0"/>
-      <stop offset="100%" stop-color="#DCCBA0"/>
-    </linearGradient>
-    <filter id="shadow">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#241C15" flood-opacity="0.15"/>
+    <filter id="crackle5">
+      <feTurbulence type="fractalNoise" baseFrequency="0.70 0.50" numOctaves="4" seed="21" result="c"/>
+      <feColorMatrix in="c" type="matrix" values="0 0 0 0 0.07  0 0 0 0 0.04  0 0 0 0 0.02  0 0 0 0.11 0" result="ct"/>
+      <feComposite in="ct" in2="SourceGraphic" operator="over"/>
     </filter>
-    <linearGradient id="greenGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#55664C"/><stop offset="100%" stop-color="#3F4D38"/>
+    <filter id="warp5">
+      <feTurbulence type="turbulence" baseFrequency="0.022 0.038" numOctaves="3" seed="18" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="nodeWarp">
+      <feTurbulence type="turbulence" baseFrequency="0.03 0.05" numOctaves="3" seed="22" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="shadow5">
+      <feDropShadow dx="1" dy="3" stdDeviation="4" flood-color="#1A0A04" flood-opacity="0.30"/>
+    </filter>
+    <radialGradient id="vig5" cx="50%" cy="48%" r="70%">
+      <stop offset="45%" stop-color="#2C1A0A" stop-opacity="0"/>
+      <stop offset="88%" stop-color="#1A0D04" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#0D0602" stop-opacity="0.62"/>
+    </radialGradient>
+    <linearGradient id="ground5" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%"   stop-color="#E6D4A4"/>
+      <stop offset="40%"  stop-color="#D4BE86"/>
+      <stop offset="100%" stop-color="#B89256"/>
     </linearGradient>
-    <linearGradient id="maroonGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#80303D"/><stop offset="100%" stop-color="#5F202B"/>
+    <!-- center node: Venetian red -->
+    <radialGradient id="centerPaint" cx="38%" cy="32%" r="65%">
+      <stop offset="0%"   stop-color="#9B3A2E"/>
+      <stop offset="60%"  stop-color="#7A2418"/>
+      <stop offset="100%" stop-color="#4E150B"/>
+    </radialGradient>
+    <!-- card backgrounds: aged ivory -->
+    <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#E2CFA0"/>
+      <stop offset="100%" stop-color="#CCBA82"/>
     </linearGradient>
-    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#B89047"/><stop offset="100%" stop-color="#8F6C2E"/>
+    <!-- header fills by branch -->
+    <linearGradient id="hdrGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4E6042"/><stop offset="100%" stop-color="#324030"/>
     </linearGradient>
-    <linearGradient id="charcoalGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#4D443C"/><stop offset="100%" stop-color="#362E27"/>
+    <linearGradient id="hdrRed" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7A2418"/><stop offset="100%" stop-color="#501208"/>
+    </linearGradient>
+    <linearGradient id="hdrGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8B6030"/><stop offset="100%" stop-color="#5E4010"/>
+    </linearGradient>
+    <linearGradient id="hdrCharcoal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3E3428"/><stop offset="100%" stop-color="#26201A"/>
     </linearGradient>
   </defs>
 
-  <!-- background layers -->
-  <rect width="1200" height="800" fill="url(#parch)"/>
-  <rect width="1200" height="800" fill="url(#parch)" filter="url(#grain)"/>
-  <rect x="20" y="20" width="1160" height="760" fill="none" stroke="#A6813C" stroke-width="1.5" rx="2"/>
-  <rect x="28" y="28" width="1144" height="744" fill="none" stroke="#6B2530" stroke-width="0.8" rx="1"/>
+  <!-- ground coats -->
+  <rect width="1200" height="800" fill="url(#ground5)"/>
+  <rect width="1200" height="800" fill="url(#ground5)" filter="url(#canvas5)" opacity="0.88"/>
+  <rect width="1200" height="800" filter="url(#crackle5)" fill="transparent"/>
+  <rect width="1200" height="800" fill="url(#vig5)"/>
 
-  <!-- Title of Mind Map -->
-  <text x="600" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#241C15">
-    The Cognitive Safety Mind Map
-  </text>
-  <text x="600" y="96" text-anchor="middle" font-family="Palatino, Georgia, serif" font-style="italic" font-size="14.5" fill="#4a3c2e">
-    A visual index of cognitive risks, mental mechanics, and the path to balance
-  </text>
+  <!-- frame -->
+  <rect x="20" y="20" width="1160" height="760" fill="none" stroke="#6B3A1A" stroke-width="2" rx="1" filter="url(#warp5)" opacity="0.75"/>
+  <rect x="28" y="28" width="1144" height="744" fill="none" stroke="#8B5020" stroke-width="0.8" rx="1" opacity="0.45"/>
 
-  <!-- Connecting curves from Center to Branches -->
-  <g fill="none" stroke="#A6813C" stroke-width="2" opacity="0.6">
-    <!-- Branch 1: Mechanics of the Mind (Top Left) -->
-    <path d="M 600 400 Q 400 380 320 260"/>
-    <!-- Branch 2: The Four Debts (Top Right) -->
-    <path d="M 600 400 Q 800 380 880 260"/>
-    <!-- Branch 3: The Guild's Staircase (Bottom Left) -->
-    <path d="M 600 400 Q 400 420 320 540"/>
-    <!-- Branch 4: Balancing the Ledger (Bottom Right) -->
-    <path d="M 600 400 Q 800 420 880 540"/>
+  <!-- titles -->
+  <text x="600" y="68" text-anchor="middle" font-family="Georgia,serif" font-size="28" font-weight="bold" fill="#1E1008">The Cognitive Safety Mind Map</text>
+  <text x="600" y="94" text-anchor="middle" font-family="Palatino,Georgia,serif" font-style="italic" font-size="14.5" fill="#3E2810" opacity="0.82">A visual index of cognitive risks, mental mechanics, and the path to balance</text>
+
+  <!-- connector curves — aged ink brushstrokes -->
+  <g fill="none" stroke="#8B6030" stroke-width="2.2" opacity="0.55" filter="url(#warp5)">
+    <path d="M600 400 Q400 380 320 260"/>
+    <path d="M600 400 Q800 380 880 260"/>
+    <path d="M600 400 Q400 420 320 540"/>
+    <path d="M600 400 Q800 420 880 540"/>
+  </g>
+  <!-- connector dots at endpoints -->
+  <g fill="#8B6030" opacity="0.60">
+    <circle cx="320" cy="260" r="4"/>
+    <circle cx="880" cy="260" r="4"/>
+    <circle cx="320" cy="540" r="4"/>
+    <circle cx="880" cy="540" r="4"/>
   </g>
 
-  <!-- CENTER NODE -->
-  <g transform="translate(600,400)" filter="url(#shadow)">
-    <circle r="75" fill="url(#maroonGrad)" stroke="#4A131C" stroke-width="3"/>
-    <circle r="67" fill="none" stroke="#EFE3C8" stroke-width="0.8" opacity="0.5"/>
-    <text y="-25" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#EFE3C8" letter-spacing="1">THE</text>
-    <text y="-5" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="#EFE3C8" letter-spacing="1.5">THROUGHLINE</text>
-    <text y="15" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-weight="bold" fill="#EFE3C8" letter-spacing="1">QUESTION</text>
-    <path d="M -40 28 L 40 28" stroke="#A6813C" stroke-width="1.2"/>
-    <text y="42" text-anchor="middle" font-family="Palatino, Georgia, serif" font-size="9.5" font-style="italic" fill="#EFE3C8">Sharpening vs. Withdrawal</text>
+  <!-- CENTER NODE — Venetian red, crackled -->
+  <g transform="translate(600,400)" filter="url(#shadow5)">
+    <circle r="78" fill="url(#centerPaint)" stroke="#2E0D08" stroke-width="2.8" filter="url(#nodeWarp)"/>
+    <circle r="78" fill="url(#centerPaint)" filter="url(#crackle5)" opacity="0.50"/>
+    <circle r="65" fill="none" stroke="#D4A870" stroke-width="0.8" opacity="0.40"/>
+    <text y="-26" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#D8C890" letter-spacing="1.5">THE</text>
+    <text y="-6" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#D8C890" letter-spacing="2">THROUGHLINE</text>
+    <text y="14" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#D8C890" letter-spacing="1.5">QUESTION</text>
+    <path d="M-40 28 L40 28" stroke="#D4A870" stroke-width="1" opacity="0.60"/>
+    <text y="42" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="9.5" font-style="italic" fill="#D8C890" opacity="0.85">Sharpening vs. Withdrawal</text>
   </g>
 
-  <!-- BRANCH 1: MECHANICS OF THE MIND (Top Left) -->
-  <g transform="translate(100,140)" filter="url(#shadow)">
-    <rect width="360" height="150" fill="none" stroke="#55664C" stroke-width="1.5" rx="6"/>
-    <rect width="360" height="36" fill="url(#greenGrad)" rx="5"/>
-    <text x="180" y="23" text-anchor="middle" font-family="Georgia, serif" font-size="14.5" font-weight="bold" fill="#EFE3C8">MECHANICS OF THE MIND</text>
-    
-    <g font-family="Palatino, Georgia, serif" font-size="11.5" fill="#3a2f24">
-      <circle cx="25" cy="58" r="3.5" fill="#55664C"/>
+  <!-- BRANCH 1: MECHANICS OF THE MIND — top-left, verdigris green -->
+  <g transform="translate(100,140)" filter="url(#shadow5)">
+    <rect width="365" height="152" fill="url(#cardBg)" rx="5" stroke="#4E6042" stroke-width="1.5" filter="url(#nodeWarp)" opacity="0.90"/>
+    <rect width="365" height="152" filter="url(#crackle5)" fill="transparent"/>
+    <rect width="365" height="36" fill="url(#hdrGreen)" rx="4" filter="url(#nodeWarp)" opacity="0.90"/>
+    <rect width="365" height="36" filter="url(#crackle5)" fill="transparent"/>
+    <text x="182" y="23" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#D8C890">MECHANICS OF THE MIND</text>
+    <g font-family="Palatino,Georgia,serif" font-size="11.5" fill="#1E2010">
+      <circle cx="25" cy="58" r="3.5" fill="#4E6042" opacity="0.8"/>
       <text x="40" y="62" font-weight="bold">Use it or lose it</text>
-      <text x="210" y="62" font-size="10.5" fill="#5c4d3c">(neuroplastic structural decay)</text>
-
-      <circle cx="25" cy="80" r="3.5" fill="#55664C"/>
+      <text x="210" y="62" font-size="10.5" fill="#3A3020">(neuroplastic structural decay)</text>
+      <circle cx="25" cy="80" r="3.5" fill="#4E6042" opacity="0.8"/>
       <text x="40" y="84" font-weight="bold">Desirable difficulty</text>
-      <text x="210" y="84" font-size="10.5" fill="#5c4d3c">(struggle creates memory)</text>
-
-      <circle cx="25" cy="102" r="3.5" fill="#55664C"/>
+      <text x="210" y="84" font-size="10.5" fill="#3A3020">(struggle creates memory)</text>
+      <circle cx="25" cy="102" r="3.5" fill="#4E6042" opacity="0.8"/>
       <text x="40" y="106" font-weight="bold">Automation complacency</text>
-      <text x="210" y="106" font-size="10.5" fill="#5c4d3c">(unconscious autopilot)</text>
-
-      <circle cx="25" cy="124" r="3.5" fill="#55664C"/>
+      <text x="210" y="106" font-size="10.5" fill="#3A3020">(unconscious autopilot)</text>
+      <circle cx="25" cy="124" r="3.5" fill="#4E6042" opacity="0.8"/>
       <text x="40" y="128" font-weight="bold">Metacognitive laziness</text>
-      <text x="210" y="128" font-size="10.5" fill="#5c4d3c">(skipping checking step)</text>
+      <text x="210" y="128" font-size="10.5" fill="#3A3020">(skipping checking step)</text>
     </g>
   </g>
 
-  <!-- BRANCH 2: THE FOUR DEBTS (Top Right) -->
-  <g transform="translate(740,140)" filter="url(#shadow)">
-    <rect width="360" height="150" fill="none" stroke="#80303D" stroke-width="1.5" rx="6"/>
-    <rect width="360" height="36" fill="url(#maroonGrad)" rx="5"/>
-    <text x="180" y="23" text-anchor="middle" font-family="Georgia, serif" font-size="14.5" font-weight="bold" fill="#EFE3C8">THE FOUR DEBTS NAMED</text>
-    
-    <g font-family="Palatino, Georgia, serif" font-size="11.5" fill="#3a2f24">
-      <circle cx="25" cy="58" r="3.5" fill="#80303D"/>
+  <!-- BRANCH 2: THE FOUR DEBTS — top-right, Venetian red -->
+  <g transform="translate(740,140)" filter="url(#shadow5)">
+    <rect width="360" height="152" fill="url(#cardBg)" rx="5" stroke="#7A2418" stroke-width="1.5" filter="url(#nodeWarp)" opacity="0.90"/>
+    <rect width="360" height="152" filter="url(#crackle5)" fill="transparent"/>
+    <rect width="360" height="36" fill="url(#hdrRed)" rx="4" filter="url(#nodeWarp)" opacity="0.90"/>
+    <rect width="360" height="36" filter="url(#crackle5)" fill="transparent"/>
+    <text x="180" y="23" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#D8C890">THE FOUR DEBTS NAMED</text>
+    <g font-family="Palatino,Georgia,serif" font-size="11.5" fill="#1E1008">
+      <circle cx="25" cy="58" r="3.5" fill="#7A2418" opacity="0.8"/>
       <text x="40" y="62" font-weight="bold">Debt 1: Critical Thinking Decline</text>
-      <text x="40" y="74" font-size="10" fill="#5c4d3c">Offloading directly correlates with lower scores</text>
-
-      <circle cx="25" cy="92" r="3.5" fill="#80303D"/>
+      <text x="40" y="74" font-size="10" fill="#3A2810">Offloading correlates with lower scores</text>
+      <circle cx="25" cy="92" r="3.5" fill="#7A2418" opacity="0.8"/>
       <text x="40" y="96" font-weight="bold">Debt 2: Cognitive Debt</text>
-      <text x="40" y="108" font-size="10" fill="#5c4d3c">Neural engagement remains low even after removal</text>
-
-      <circle cx="25" cy="126" r="3.5" fill="#80303D"/>
+      <text x="40" y="108" font-size="10" fill="#3A2810">Neural engagement lingers low after removal</text>
+      <circle cx="25" cy="126" r="3.5" fill="#7A2418" opacity="0.8"/>
       <text x="40" y="130" font-weight="bold">Debt 3: Confidence Miscalibration</text>
-      <circle cx="25" cy="144" r="3.5" fill="#80303D"/>
+      <circle cx="25" cy="144" r="3.5" fill="#7A2418" opacity="0.8"/>
       <text x="40" y="148" font-weight="bold">Debt 4: Skill Formation Gap</text>
     </g>
   </g>
 
-  <!-- BRANCH 3: THE GUILD'S STAIRCASE (Bottom Left) -->
-  <g transform="translate(100,510)" filter="url(#shadow)">
-    <rect width="360" height="150" fill="none" stroke="#B89047" stroke-width="1.5" rx="6"/>
-    <rect width="360" height="36" fill="url(#goldGrad)" rx="5"/>
-    <text x="180" y="23" text-anchor="middle" font-family="Georgia, serif" font-size="14.5" font-weight="bold" fill="#EFE3C8">THE GUILD'S STAIRCASE</text>
-    
-    <g font-family="Palatino, Georgia, serif" font-size="11.5" fill="#3a2f24">
-      <circle cx="25" cy="58" r="3.5" fill="#B89047"/>
+  <!-- BRANCH 3: THE GUILD'S STAIRCASE — bottom-left, raw sienna gold -->
+  <g transform="translate(100,510)" filter="url(#shadow5)">
+    <rect width="365" height="152" fill="url(#cardBg)" rx="5" stroke="#8B6030" stroke-width="1.5" filter="url(#nodeWarp)" opacity="0.90"/>
+    <rect width="365" height="152" filter="url(#crackle5)" fill="transparent"/>
+    <rect width="365" height="36" fill="url(#hdrGold)" rx="4" filter="url(#nodeWarp)" opacity="0.90"/>
+    <rect width="365" height="36" filter="url(#crackle5)" fill="transparent"/>
+    <text x="182" y="23" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#D8C890">THE GUILD'S STAIRCASE</text>
+    <g font-family="Palatino,Georgia,serif" font-size="11.5" fill="#1E1808">
+      <circle cx="25" cy="58" r="3.5" fill="#8B6030" opacity="0.8"/>
       <text x="40" y="62" font-weight="bold">The Apprentice (Novice)</text>
-      <text x="210" y="62" font-size="10.5" fill="#5c4d3c">Risk: Never forming skills</text>
-
-      <circle cx="25" cy="84" r="3.5" fill="#B89047"/>
+      <text x="210" y="62" font-size="10.5" fill="#3A2810">Risk: Never forming skills</text>
+      <circle cx="25" cy="84" r="3.5" fill="#8B6030" opacity="0.8"/>
       <text x="40" y="88" font-weight="bold">The Journeyman (Competent)</text>
-      <text x="210" y="88" font-size="10.5" fill="#5c4d3c">Goldilocks zone of learning</text>
-
-      <circle cx="25" cy="110" r="3.5" fill="#B89047"/>
+      <text x="210" y="88" font-size="10.5" fill="#3A2810">Goldilocks zone of learning</text>
+      <circle cx="25" cy="110" r="3.5" fill="#8B6030" opacity="0.8"/>
       <text x="40" y="114" font-weight="bold">The Master (Expert)</text>
-      <text x="210" y="114" font-size="10.5" fill="#5c4d3c">Risk: Complacency override</text>
+      <text x="210" y="114" font-size="10.5" fill="#3A2810">Risk: Complacency override</text>
     </g>
   </g>
 
-  <!-- BRANCH 4: BALANCING THE LEDGER (Bottom Right) -->
-  <g transform="translate(740,510)" filter="url(#shadow)">
-    <rect width="360" height="150" fill="none" stroke="#4D443C" stroke-width="1.5" rx="6"/>
-    <rect width="360" height="36" fill="url(#charcoalGrad)" rx="5"/>
-    <text x="180" y="23" text-anchor="middle" font-family="Georgia, serif" font-size="14.5" font-weight="bold" fill="#EFE3C8">BALANCING THE LEDGER</text>
-    
-    <g font-family="Palatino, Georgia, serif" font-size="11.5" fill="#3a2f24">
-      <circle cx="25" cy="58" r="3.5" fill="#4D443C"/>
+  <!-- BRANCH 4: BALANCING THE LEDGER — bottom-right, lamp black charcoal -->
+  <g transform="translate(740,510)" filter="url(#shadow5)">
+    <rect width="360" height="152" fill="url(#cardBg)" rx="5" stroke="#3E3428" stroke-width="1.5" filter="url(#nodeWarp)" opacity="0.90"/>
+    <rect width="360" height="152" filter="url(#crackle5)" fill="transparent"/>
+    <rect width="360" height="36" fill="url(#hdrCharcoal)" rx="4" filter="url(#nodeWarp)" opacity="0.90"/>
+    <rect width="360" height="36" filter="url(#crackle5)" fill="transparent"/>
+    <text x="180" y="23" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#D8C890">BALANCING THE LEDGER</text>
+    <g font-family="Palatino,Georgia,serif" font-size="11.5" fill="#1A1410">
+      <circle cx="25" cy="58" r="3.5" fill="#3E3428" opacity="0.8"/>
       <text x="40" y="62" font-weight="bold">Conceptual Inquiry</text>
-      <text x="210" y="62" font-size="10.5" fill="#5c4d3c">(asking "how" before "do")</text>
-
-      <circle cx="25" cy="84" r="3.5" fill="#4D443C"/>
+      <text x="210" y="62" font-size="10.5" fill="#3A2C20">(asking "how" before "do")</text>
+      <circle cx="25" cy="84" r="3.5" fill="#3E3428" opacity="0.8"/>
       <text x="40" y="88" font-weight="bold">Generation-Then-Comprehension</text>
-      <text x="210" y="88" font-size="10.5" fill="#5c4d3c">(line-by-line checks)</text>
-
-      <circle cx="25" cy="110" r="3.5" fill="#4D443C"/>
+      <text x="210" y="88" font-size="10.5" fill="#3A2C20">(line-by-line checks)</text>
+      <circle cx="25" cy="110" r="3.5" fill="#3E3428" opacity="0.8"/>
       <text x="40" y="114" font-weight="bold">Deliberate Struggle First</text>
-      <text x="210" y="114" font-size="10.5" fill="#5c4d3c">(unaided draft attempts)</text>
+      <text x="210" y="114" font-size="10.5" fill="#3A2C20">(unaided draft attempts)</text>
     </g>
   </g>
 
-  <!-- Decorative connecting dots in corner frame -->
-  <g stroke="#6B2530" stroke-width="1.2" fill="none" opacity="0.8">
-    <circle cx="36" cy="36" r="2" fill="#6B2530" stroke="none"/>
-    <circle cx="1164" cy="36" r="2" fill="#6B2530" stroke="none"/>
-    <circle cx="1164" cy="764" r="2" fill="#6B2530" stroke="none"/>
-    <circle cx="36" cy="764" r="2" fill="#6B2530" stroke="none"/>
+  <!-- corner frame dots -->
+  <g fill="#6B3A1A" opacity="0.70">
+    <circle cx="36" cy="36" r="2.2"/>
+    <circle cx="1164" cy="36" r="2.2"/>
+    <circle cx="1164" cy="764" r="2.2"/>
+    <circle cx="36" cy="764" r="2.2"/>
   </g>
 </svg>

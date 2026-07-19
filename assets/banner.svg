@@ -1,83 +1,114 @@
 <svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/>
-      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0"/>
-      <feComposite operator="over" in2="SourceGraphic"/>
+    <!-- canvas linen texture -->
+    <filter id="canvas" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.08" numOctaves="5" seed="2" result="linen"/>
+      <feColorMatrix in="linen" type="matrix" values="0 0 0 0 0.13  0 0 0 0 0.10  0 0 0 0 0.07  0 0 0 0.28 0" result="linenTinted"/>
+      <feComposite in="linenTinted" in2="SourceGraphic" operator="over"/>
     </filter>
-    <linearGradient id="parchment" x1="0" y1="0" x2="0.3" y2="1">
-      <stop offset="0%" stop-color="#F2E8D0"/>
-      <stop offset="50%" stop-color="#EDE0C0"/>
-      <stop offset="100%" stop-color="#DCCBA0"/>
-    </linearGradient>
-    <radialGradient id="vignette" cx="50%" cy="50%" r="72%">
-      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#1a140d" stop-opacity="0.2"/>
+    <!-- crackle layer -->
+    <filter id="crackle" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65 0.45" numOctaves="4" seed="7" result="cracks"/>
+      <feColorMatrix in="cracks" type="matrix" values="0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0.12 0" result="crackTinted"/>
+      <feComposite in="crackTinted" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <!-- paint warp for filled shapes -->
+    <filter id="paintWarp">
+      <feTurbulence type="turbulence" baseFrequency="0.025 0.04" numOctaves="3" seed="4" result="warp"/>
+      <feDisplacementMap in="SourceGraphic" in2="warp" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- aged vignette -->
+    <radialGradient id="vigAged" cx="50%" cy="48%" r="70%">
+      <stop offset="45%" stop-color="#2C1A0A" stop-opacity="0"/>
+      <stop offset="88%" stop-color="#1A0D04" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0D0602" stop-opacity="0.65"/>
     </radialGradient>
-    <radialGradient id="sealGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#8a3040"/>
-      <stop offset="100%" stop-color="#5a1820"/>
+    <!-- oil paint ground: raw linen → warm ochre -->
+    <linearGradient id="ground" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%"   stop-color="#E8D9B0"/>
+      <stop offset="30%"  stop-color="#D9C890"/>
+      <stop offset="65%"  stop-color="#C9B478"/>
+      <stop offset="100%" stop-color="#B89A58"/>
+    </linearGradient>
+    <!-- warm mid-tone tint layer -->
+    <linearGradient id="warmTint" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#8B5A2B" stop-opacity="0.12"/>
+      <stop offset="50%"  stop-color="#A07840" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#6B3A18" stop-opacity="0.14"/>
+    </linearGradient>
+    <!-- wax seal: Venetian red -->
+    <radialGradient id="sealPaint" cx="38%" cy="32%" r="65%">
+      <stop offset="0%"   stop-color="#9B3A2E"/>
+      <stop offset="60%"  stop-color="#7A2418"/>
+      <stop offset="100%" stop-color="#4E150B"/>
     </radialGradient>
   </defs>
 
-  <!-- background layers -->
-  <rect width="1200" height="420" fill="url(#parchment)"/>
-  <rect width="1200" height="420" fill="url(#parchment)" filter="url(#grain)"/>
-  <rect width="1200" height="420" fill="url(#vignette)"/>
+  <!-- ground coat -->
+  <rect width="1200" height="420" fill="url(#ground)"/>
+  <!-- warm tint glaze -->
+  <rect width="1200" height="420" fill="url(#warmTint)"/>
+  <!-- linen canvas texture -->
+  <rect width="1200" height="420" fill="url(#ground)" filter="url(#canvas)" opacity="0.9"/>
+  <!-- crackle glaze -->
+  <rect width="1200" height="420" filter="url(#crackle)" fill="transparent"/>
+  <!-- aged vignette -->
+  <rect width="1200" height="420" fill="url(#vigAged)"/>
 
-  <!-- double frame -->
-  <rect x="22" y="22" width="1156" height="376" fill="none" stroke="#A6813C" stroke-width="2" rx="2"/>
-  <rect x="30" y="30" width="1140" height="360" fill="none" stroke="#6B2530" stroke-width="0.8" rx="1"/>
+  <!-- outer frame — rough iron-oxide stroke -->
+  <rect x="22" y="22" width="1156" height="376" fill="none" stroke="#6B3A1A" stroke-width="2.5" rx="1" filter="url(#paintWarp)" opacity="0.8"/>
+  <rect x="31" y="31" width="1138" height="358" fill="none" stroke="#8B5020" stroke-width="1" rx="1" opacity="0.5"/>
 
-  <!-- corner flourishes -->
-  <g stroke="#6B2530" stroke-width="1.2" fill="none" opacity="0.8">
-    <path d="M30,58 Q30,30 58,30"/>
-    <path d="M1142,30 Q1170,30 1170,58"/>
-    <path d="M1170,362 Q1170,390 1142,390"/>
-    <path d="M58,390 Q30,390 30,362"/>
-    <!-- inner corner dots -->
-    <circle cx="42" cy="42" r="2" fill="#6B2530" stroke="none"/>
-    <circle cx="1158" cy="42" r="2" fill="#6B2530" stroke="none"/>
-    <circle cx="1158" cy="378" r="2" fill="#6B2530" stroke="none"/>
-    <circle cx="42" cy="378" r="2" fill="#6B2530" stroke="none"/>
+  <!-- corner flourishes — uneven hand-painted -->
+  <g stroke="#7A3018" stroke-width="1.5" fill="none" opacity="0.75" filter="url(#paintWarp)">
+    <path d="M31,60 Q31,31 60,31"/>
+    <path d="M1140,31 Q1169,31 1169,60"/>
+    <path d="M1169,360 Q1169,389 1140,389"/>
+    <path d="M60,389 Q31,389 31,360"/>
+    <circle cx="44" cy="44" r="2.2" fill="#7A3018" stroke="none"/>
+    <circle cx="1156" cy="44" r="2.2" fill="#7A3018" stroke="none"/>
+    <circle cx="1156" cy="376" r="2.2" fill="#7A3018" stroke="none"/>
+    <circle cx="44" cy="376" r="2.2" fill="#7A3018" stroke="none"/>
   </g>
 
-  <!-- wax seal emblem -->
-  <g transform="translate(600,105)">
-    <circle r="48" fill="url(#sealGlow)" stroke="#3e1018" stroke-width="2.5"/>
-    <circle r="48" fill="none" stroke="#A6813C" stroke-width="0.8" opacity="0.5"/>
-    <circle r="38" fill="none" stroke="#EFE3C8" stroke-width="0.5" opacity="0.3"/>
-    <g fill="#EFE3C8" font-family="Georgia, 'Times New Roman', serif">
+  <!-- wax seal — Venetian red oil paint, textured -->
+  <g transform="translate(600,105)" filter="url(#paintWarp)">
+    <circle r="50" fill="url(#sealPaint)" stroke="#2E0D08" stroke-width="2.5"/>
+    <circle r="42" fill="none" stroke="#D4A870" stroke-width="0.8" opacity="0.45"/>
+    <circle r="50" fill="url(#sealPaint)" filter="url(#crackle)" opacity="0.4"/>
+    <g fill="#E8D5A8" font-family="Georgia, 'Times New Roman', serif">
       <path id="sealtop" d="M -32,2 A 32,32 0 0,1 32,2" fill="none"/>
       <text font-size="10" letter-spacing="3.5">
         <textPath href="#sealtop" startOffset="50%" text-anchor="middle">CAVEAT · LECTOR</textPath>
       </text>
     </g>
-    <path d="M-14,-6 Q0,-26 14,-6 Q6,2 0,-4 Q-6,2 -14,-6 Z" fill="#EFE3C8" opacity="0.9"/>
-    <circle cy="10" r="3" fill="#EFE3C8" opacity="0.85"/>
+    <path d="M-14,-6 Q0,-27 14,-6 Q6,2 0,-4 Q-6,2 -14,-6 Z" fill="#E8D5A8" opacity="0.88"/>
+    <circle cy="11" r="3.2" fill="#E8D5A8" opacity="0.8"/>
   </g>
 
-  <!-- eyebrow -->
+  <!-- eyebrow — lamp black ink -->
   <text x="600" y="184" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
-        font-size="14" letter-spacing="7" fill="#6B2530">A FIELD STUDY IN THREE PARTS</text>
+        font-size="14" letter-spacing="7" fill="#2C1808" opacity="0.78">A FIELD STUDY IN THREE PARTS</text>
 
-  <!-- title -->
+  <!-- title — ivory lead white over dark ground -->
+  <text x="602" y="242" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="54" font-weight="bold" fill="#1C1208" opacity="0.18">The Cognitive Ledger</text>
   <text x="600" y="240" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
-        font-size="54" font-weight="bold" fill="#241C15">The Cognitive Ledger</text>
+        font-size="54" font-weight="bold" fill="#2E1E0C">The Cognitive Ledger</text>
 
-  <!-- divider with decorative elements -->
-  <g stroke="#A6813C" stroke-width="1.2">
-    <line x1="380" y1="265" x2="570" y2="265"/>
-    <line x1="630" y1="265" x2="820" y2="265"/>
+  <!-- divider -->
+  <g stroke="#8B6030" stroke-width="1.3" opacity="0.7">
+    <line x1="378" y1="265" x2="568" y2="265"/>
+    <line x1="632" y1="265" x2="822" y2="265"/>
   </g>
-  <circle cx="600" cy="265" r="5" fill="#6B2530"/>
-  <circle cx="600" cy="265" r="3" fill="#EFE3C8" opacity="0.3"/>
+  <circle cx="600" cy="265" r="5.5" fill="#7A2418" opacity="0.85"/>
+  <circle cx="600" cy="265" r="3" fill="#D4A870" opacity="0.35"/>
 
   <!-- subtitle -->
-  <text x="600" y="305" text-anchor="middle" font-family="Palatino, 'Book Antiqua', Georgia, serif"
-        font-style="italic" font-size="19" fill="#3a2f24">On borrowing thought from machines, and what is quietly owed in return</text>
+  <text x="600" y="307" text-anchor="middle" font-family="Palatino, 'Book Antiqua', Georgia, serif"
+        font-style="italic" font-size="19" fill="#2C1808" opacity="0.80">On borrowing thought from machines, and what is quietly owed in return</text>
 
-  <!-- bottom tagline -->
+  <!-- tagline -->
   <text x="600" y="365" text-anchor="middle" font-family="Georgia, serif"
-        font-size="12.5" letter-spacing="1.8" fill="#5c4d3c">Assembled from peer-reviewed studies, randomized trials, and one very old dialogue of Plato's</text>
+        font-size="12.5" letter-spacing="1.8" fill="#4A3018" opacity="0.72">Assembled from peer-reviewed studies, randomized trials, and one very old dialogue of Plato's</text>
 </svg>
