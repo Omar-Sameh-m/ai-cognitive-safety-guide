@@ -228,6 +228,14 @@ Wang & Zhang (2026) found that mentally framing AI as a *collaborator you scruti
 > [!NOTE]
 > Two things that are plausible but not yet directly tested: dedicated AI-free blocks of deep work, and journaling your AI use afterward. Both are reasonable extensions of what we know about skill retention. Neither has been studied directly in this context. Sensible practices — not proven interventions.
 
+### So what does this actually look like at your stage?
+
+**If you're still building the skill (a student, or new to this domain):** Default to patterns 1 through 3 almost every time. The cost of skipping the struggle is highest here, because you don't yet have the judgment to know when a shortcut is actually safe. Treat "the AI got it right" as uninteresting — the question that matters is whether you could have gotten there without it.
+
+**If you're competent but still growing (a few years in):** This is the zone where AI assistance has shown the clearest measured benefit — the middle of the skill ladder is the sweet spot, not the extremes (see question 6). Use it more freely here. But keep pattern 2 — interrogating the draft instead of accepting it — as a default habit, not something you only do when you remember to.
+
+**If you're already experienced:** Your risk isn't failing to learn something — you already know it. Your risk is automation complacency (see question 5): the tool has been reliable long enough that you've quietly stopped checking it. The fix looks different from the other two stages. It's not "struggle more." It's "deliberately re-check your own judgment on a schedule" — especially in the parts of your work slightly outside your core expertise, which is exactly where question 5's physician data showed experience stopped being protective.
+
 [↑ Back to top](#table-of-contents) · [Next: How would I know if I'm in trouble? →](#8-how-would-i-even-know-if-im-already-in-trouble)
 
 ---
