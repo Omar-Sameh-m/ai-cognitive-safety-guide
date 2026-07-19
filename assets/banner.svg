@@ -1,68 +1,83 @@
 <svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" result="noise"/>
-      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.035 0"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/>
+      <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0"/>
       <feComposite operator="over" in2="SourceGraphic"/>
     </filter>
-    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#EFE3C8"/>
-      <stop offset="100%" stop-color="#DFCBA0"/>
+    <linearGradient id="parchment" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#F2E8D0"/>
+      <stop offset="50%" stop-color="#EDE0C0"/>
+      <stop offset="100%" stop-color="#DCCBA0"/>
     </linearGradient>
-    <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
-      <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#241C15" stop-opacity="0.18"/>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="72%">
+      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1a140d" stop-opacity="0.2"/>
+    </radialGradient>
+    <radialGradient id="sealGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8a3040"/>
+      <stop offset="100%" stop-color="#5a1820"/>
     </radialGradient>
   </defs>
 
+  <!-- background layers -->
   <rect width="1200" height="420" fill="url(#parchment)"/>
   <rect width="1200" height="420" fill="url(#parchment)" filter="url(#grain)"/>
   <rect width="1200" height="420" fill="url(#vignette)"/>
 
-  <!-- outer frame -->
-  <rect x="24" y="24" width="1152" height="372" fill="none" stroke="#A6813C" stroke-width="2"/>
-  <rect x="32" y="32" width="1136" height="356" fill="none" stroke="#6B2530" stroke-width="1"/>
+  <!-- double frame -->
+  <rect x="22" y="22" width="1156" height="376" fill="none" stroke="#A6813C" stroke-width="2" rx="2"/>
+  <rect x="30" y="30" width="1140" height="360" fill="none" stroke="#6B2530" stroke-width="0.8" rx="1"/>
 
   <!-- corner flourishes -->
-  <g stroke="#6B2530" stroke-width="1.5" fill="none">
-    <path d="M32,60 Q32,32 60,32"/>
-    <path d="M1140,32 Q1168,32 1168,60"/>
-    <path d="M1168,360 Q1168,388 1140,388"/>
-    <path d="M60,388 Q32,388 32,360"/>
+  <g stroke="#6B2530" stroke-width="1.2" fill="none" opacity="0.8">
+    <path d="M30,58 Q30,30 58,30"/>
+    <path d="M1142,30 Q1170,30 1170,58"/>
+    <path d="M1170,362 Q1170,390 1142,390"/>
+    <path d="M58,390 Q30,390 30,362"/>
+    <!-- inner corner dots -->
+    <circle cx="42" cy="42" r="2" fill="#6B2530" stroke="none"/>
+    <circle cx="1158" cy="42" r="2" fill="#6B2530" stroke="none"/>
+    <circle cx="1158" cy="378" r="2" fill="#6B2530" stroke="none"/>
+    <circle cx="42" cy="378" r="2" fill="#6B2530" stroke="none"/>
   </g>
 
   <!-- wax seal emblem -->
-  <g transform="translate(600,108)">
-    <circle r="46" fill="#6B2530" stroke="#4a1a20" stroke-width="2"/>
-    <circle r="46" fill="none" stroke="#A6813C" stroke-width="1" opacity="0.5"/>
+  <g transform="translate(600,105)">
+    <circle r="48" fill="url(#sealGlow)" stroke="#3e1018" stroke-width="2.5"/>
+    <circle r="48" fill="none" stroke="#A6813C" stroke-width="0.8" opacity="0.5"/>
+    <circle r="38" fill="none" stroke="#EFE3C8" stroke-width="0.5" opacity="0.3"/>
     <g fill="#EFE3C8" font-family="Georgia, 'Times New Roman', serif">
-      <path id="sealtop" d="M -34,0 A 34,34 0 0,1 34,0" fill="none"/>
-      <text font-size="11" letter-spacing="3">
+      <path id="sealtop" d="M -32,2 A 32,32 0 0,1 32,2" fill="none"/>
+      <text font-size="10" letter-spacing="3.5">
         <textPath href="#sealtop" startOffset="50%" text-anchor="middle">CAVEAT · LECTOR</textPath>
       </text>
     </g>
-    <path d="M-14,-4 Q0,-24 14,-4 Q6,4 0,-2 Q-6,4 -14,-4 Z" fill="#EFE3C8"/>
-    <circle cy="10" r="3" fill="#EFE3C8"/>
+    <path d="M-14,-6 Q0,-26 14,-6 Q6,2 0,-4 Q-6,2 -14,-6 Z" fill="#EFE3C8" opacity="0.9"/>
+    <circle cy="10" r="3" fill="#EFE3C8" opacity="0.85"/>
   </g>
 
   <!-- eyebrow -->
-  <text x="600" y="185" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
-        font-size="15" letter-spacing="6" fill="#6B2530">A FIELD STUDY IN THREE PARTS</text>
+  <text x="600" y="184" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+        font-size="14" letter-spacing="7" fill="#6B2530">A FIELD STUDY IN THREE PARTS</text>
 
   <!-- title -->
   <text x="600" y="240" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
         font-size="54" font-weight="bold" fill="#241C15">The Cognitive Ledger</text>
 
-  <!-- divider -->
-  <g stroke="#A6813C" stroke-width="1.5">
-    <line x1="420" y1="265" x2="780" y2="265"/>
+  <!-- divider with decorative elements -->
+  <g stroke="#A6813C" stroke-width="1.2">
+    <line x1="380" y1="265" x2="570" y2="265"/>
+    <line x1="630" y1="265" x2="820" y2="265"/>
   </g>
-  <circle cx="600" cy="265" r="4" fill="#6B2530"/>
+  <circle cx="600" cy="265" r="5" fill="#6B2530"/>
+  <circle cx="600" cy="265" r="3" fill="#EFE3C8" opacity="0.3"/>
 
   <!-- subtitle -->
   <text x="600" y="305" text-anchor="middle" font-family="Palatino, 'Book Antiqua', Georgia, serif"
-        font-style="italic" font-size="20" fill="#3a2f24">On borrowing thought from machines, and what is quietly owed in return</text>
+        font-style="italic" font-size="19" fill="#3a2f24">On borrowing thought from machines, and what is quietly owed in return</text>
 
+  <!-- bottom tagline -->
   <text x="600" y="365" text-anchor="middle" font-family="Georgia, serif"
-        font-size="13" letter-spacing="2" fill="#5c4d3c">Assembled from peer-reviewed studies, randomized trials, and one very old dialogue of Plato's</text>
+        font-size="12.5" letter-spacing="1.8" fill="#5c4d3c">Assembled from peer-reviewed studies, randomized trials, and one very old dialogue of Plato's</text>
 </svg>
