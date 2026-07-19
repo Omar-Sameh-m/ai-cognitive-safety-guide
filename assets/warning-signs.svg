@@ -1,0 +1,80 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="canvasW" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.09" numOctaves="5" seed="37" result="l"/>
+      <feColorMatrix in="l" type="matrix" values="0 0 0 0 0.12  0 0 0 0 0.09  0 0 0 0 0.06  0 0 0 0.30 0" result="t"/>
+      <feComposite in="t" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="crackleW">
+      <feTurbulence type="fractalNoise" baseFrequency="0.72 0.50" numOctaves="4" seed="43" result="c"/>
+      <feColorMatrix in="c" type="matrix" values="0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0.14 0" result="ct"/>
+      <feComposite in="ct" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="warpW">
+      <feTurbulence type="turbulence" baseFrequency="0.03 0.05" numOctaves="3" seed="21" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- warmer, softer vignette — more intimate page feel -->
+    <radialGradient id="vigW" cx="50%" cy="48%" r="75%">
+      <stop offset="40%" stop-color="#2C1A0A" stop-opacity="0"/>
+      <stop offset="85%" stop-color="#1A0D04" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#0D0602" stop-opacity="0.55"/>
+    </radialGradient>
+    <!-- aged page — warmer, lighter than other SVGs — more notebook-ish -->
+    <linearGradient id="groundW" x1="0.05" y1="0" x2="0.95" y2="1">
+      <stop offset="0%"   stop-color="#F0E4C0"/>
+      <stop offset="50%"  stop-color="#E4D4A0"/>
+      <stop offset="100%" stop-color="#D4C080"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="560" fill="url(#groundW)"/>
+  <rect width="900" height="560" fill="url(#groundW)" filter="url(#canvasW)" opacity="0.92"/>
+  <rect width="900" height="560" filter="url(#crackleW)" fill="transparent"/>
+  <rect width="900" height="560" fill="url(#vigW)"/>
+
+  <!-- rough ruled lines — like a notebook page -->
+  <line x1="60" y1="158" x2="840" y2="158" stroke="#A89060" stroke-width="0.8" opacity="0.28" filter="url(#warpW)"/>
+  <line x1="60" y1="238" x2="840" y2="238" stroke="#A89060" stroke-width="0.8" opacity="0.28" filter="url(#warpW)"/>
+  <line x1="60" y1="318" x2="840" y2="318" stroke="#A89060" stroke-width="0.8" opacity="0.28" filter="url(#warpW)"/>
+  <line x1="60" y1="398" x2="840" y2="398" stroke="#A89060" stroke-width="0.8" opacity="0.28" filter="url(#warpW)"/>
+  <line x1="60" y1="478" x2="840" y2="478" stroke="#A89060" stroke-width="0.8" opacity="0.28" filter="url(#warpW)"/>
+
+  <!-- left margin line — red, like a real notebook -->
+  <line x1="110" y1="60" x2="110" y2="530" stroke="#9B3A2E" stroke-width="1.2" opacity="0.35" filter="url(#warpW)"/>
+
+  <!-- header -->
+  <text x="450" y="68" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="22" font-weight="bold" fill="#2A1608" opacity="0.88">Warning Signs — A Self-Check</text>
+  <text x="450" y="90" text-anchor="middle" font-family="Palatino,'Book Antiqua',Georgia,serif" font-style="italic" font-size="13" fill="#3E2810" opacity="0.72">Not a diagnosis. A ledger. Check these against the last month.</text>
+
+  <!-- divider -->
+  <line x1="130" y1="104" x2="770" y2="104" stroke="#8B6030" stroke-width="1" opacity="0.45" filter="url(#warpW)"/>
+
+  <!-- ITEM 1 -->
+  <!-- checkbox — empty square, hand-drawn feel -->
+  <rect x="128" y="128" width="28" height="28" fill="none" stroke="#2A1608" stroke-width="2" rx="2" filter="url(#warpW)" opacity="0.75"/>
+  <text x="175" y="149" font-family="'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif" font-size="17.5" fill="#1E1008" opacity="0.88">You get a working answer and stop — without knowing <tspan font-style="italic">why</tspan> it works.</text>
+
+  <!-- ITEM 2 -->
+  <rect x="128" y="208" width="28" height="28" fill="none" stroke="#2A1608" stroke-width="2" rx="2" filter="url(#warpW)" opacity="0.75"/>
+  <text x="175" y="229" font-family="'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif" font-size="17.5" fill="#1E1008" opacity="0.88">You reach for the tool before you've tried the problem yourself.</text>
+
+  <!-- ITEM 3 -->
+  <rect x="128" y="288" width="28" height="28" fill="none" stroke="#2A1608" stroke-width="2" rx="2" filter="url(#warpW)" opacity="0.75"/>
+  <text x="175" y="309" font-family="'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif" font-size="17.5" fill="#1E1008" opacity="0.88">The AI's output <tspan font-style="italic">looks</tspan> right, and that's enough — you don't check it.</text>
+
+  <!-- ITEM 4 -->
+  <rect x="128" y="368" width="28" height="28" fill="none" stroke="#2A1608" stroke-width="2" rx="2" filter="url(#warpW)" opacity="0.75"/>
+  <text x="175" y="389" font-family="'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif" font-size="17.5" fill="#1E1008" opacity="0.88">You couldn't explain this week's key decision to a colleague without the AI.</text>
+
+  <!-- ITEM 5 -->
+  <rect x="128" y="448" width="28" height="28" fill="none" stroke="#2A1608" stroke-width="2" rx="2" filter="url(#warpW)" opacity="0.75"/>
+  <text x="175" y="469" font-family="'Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif" font-size="17.5" fill="#1E1008" opacity="0.88">It's been weeks since you did this kind of work <tspan font-style="italic">the slow way</tspan>.</text>
+
+  <!-- margin note — handwritten-ish annotation -->
+  <text x="52" y="200" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="10" fill="#7A2418" opacity="0.60" transform="rotate(-8,52,200)">!!</text>
+  <text x="52" y="370" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="10" fill="#7A2418" opacity="0.50" transform="rotate(5,52,370)">cf. Q3</text>
+
+  <!-- footer note -->
+  <text x="450" y="534" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="11.5" font-style="italic" fill="#2A1608" opacity="0.58">If more than two of these are true this month, you're already past the line worth thinking about.</text>
+</svg>

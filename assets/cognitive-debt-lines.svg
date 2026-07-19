@@ -1,0 +1,97 @@
+<svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="canvasD" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.08" numOctaves="5" seed="17" result="l"/>
+      <feColorMatrix in="l" type="matrix" values="0 0 0 0 0.13  0 0 0 0 0.10  0 0 0 0 0.07  0 0 0 0.27 0" result="t"/>
+      <feComposite in="t" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="crackleD">
+      <feTurbulence type="fractalNoise" baseFrequency="0.68 0.46" numOctaves="4" seed="25" result="c"/>
+      <feColorMatrix in="c" type="matrix" values="0 0 0 0 0.07  0 0 0 0 0.04  0 0 0 0 0.02  0 0 0 0.11 0" result="ct"/>
+      <feComposite in="ct" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="warpD">
+      <feTurbulence type="turbulence" baseFrequency="0.022 0.036" numOctaves="3" seed="8" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <radialGradient id="vigD" cx="50%" cy="48%" r="70%">
+      <stop offset="45%" stop-color="#2C1A0A" stop-opacity="0"/>
+      <stop offset="88%" stop-color="#1A0D04" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#0D0602" stop-opacity="0.62"/>
+    </radialGradient>
+    <linearGradient id="groundD" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%"   stop-color="#E8D9B0"/>
+      <stop offset="40%"  stop-color="#D9C890"/>
+      <stop offset="100%" stop-color="#B89A58"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="540" fill="url(#groundD)"/>
+  <rect width="1200" height="540" fill="url(#groundD)" filter="url(#canvasD)" opacity="0.9"/>
+  <rect width="1200" height="540" filter="url(#crackleD)" fill="transparent"/>
+  <rect width="1200" height="540" fill="url(#vigD)"/>
+  <rect x="22" y="22" width="1156" height="496" fill="none" stroke="#6B3A1A" stroke-width="2.5" rx="1" filter="url(#warpD)" opacity="0.8"/>
+
+  <!-- title -->
+  <text x="600" y="68" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="26" font-weight="bold" fill="#1E1008">Does the Brain Bounce Back?</text>
+  <text x="600" y="94" text-anchor="middle" font-family="Palatino,'Book Antiqua',Georgia,serif" font-style="italic" font-size="14.5" fill="#3E2810" opacity="0.82">MIT Media Lab, 2025 — 54 participants tracked across four sessions</text>
+
+  <!-- Y axis label -->
+  <text x="95" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" fill="#3E2810" opacity="0.75" transform="rotate(-90,95,300)">brain engagement (EEG)</text>
+
+  <!-- Y axis -->
+  <line x1="160" y1="130" x2="160" y2="430" stroke="#2A1608" stroke-width="1.2" opacity="0.45" filter="url(#warpD)"/>
+  <!-- X axis -->
+  <line x1="160" y1="430" x2="1060" y2="430" stroke="#2A1608" stroke-width="1.2" opacity="0.45" filter="url(#warpD)"/>
+
+  <!-- baseline level indicator — dashed -->
+  <line x1="160" y1="195" x2="1060" y2="195" stroke="#4A2810" stroke-width="1" stroke-dasharray="8,6" opacity="0.30" filter="url(#warpD)"/>
+  <text x="165" y="191" font-family="Palatino,Georgia,serif" font-size="11.5" fill="#3E2810" opacity="0.60">baseline (unaided writing)</text>
+
+  <!-- X axis phase labels -->
+  <text x="280" y="456" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#3E2810" opacity="0.75">Session 1</text>
+  <text x="500" y="456" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#3E2810" opacity="0.75">Session 2</text>
+  <text x="720" y="456" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#3E2810" opacity="0.75">Session 3</text>
+  <text x="940" y="456" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#3E2810" opacity="0.75">Session 4 (tool removed)</text>
+
+  <!-- X tick marks -->
+  <line x1="280" y1="426" x2="280" y2="434" stroke="#2A1608" stroke-width="1.2" opacity="0.45"/>
+  <line x1="500" y1="426" x2="500" y2="434" stroke="#2A1608" stroke-width="1.2" opacity="0.45"/>
+  <line x1="720" y1="426" x2="720" y2="434" stroke="#2A1608" stroke-width="1.2" opacity="0.45"/>
+  <line x1="940" y1="426" x2="940" y2="434" stroke="#2A1608" stroke-width="1.2" opacity="0.45"/>
+
+  <!-- LINE 1: search/unaided — dips then recovers (sage green) -->
+  <!-- Points: (280,195) start at baseline, (500,290) dip, (720,230) partial recovery, (940,195) full recovery -->
+  <path d="M280,195 C350,195 430,290 500,290 C570,290 640,230 720,230 C800,230 870,195 940,195"
+        fill="none" stroke="#4E6040" stroke-width="3.5" stroke-linecap="round" opacity="0.88" filter="url(#warpD)"/>
+  <!-- dot at recovery -->
+  <circle cx="940" cy="195" r="7" fill="#4E6040" opacity="0.85" filter="url(#warpD)"/>
+
+  <!-- LINE 2: ChatGPT — dips then stays low (venetian red) -->
+  <!-- Points: (280,195) baseline, (500,320) dip deep, (720,340) stays low, (940,335) barely moves up -->
+  <path d="M280,195 C350,195 430,320 500,320 C570,320 650,340 720,340 C800,340 870,335 940,340"
+        fill="none" stroke="#7A2418" stroke-width="3.5" stroke-linecap="round" opacity="0.88" filter="url(#warpD)"/>
+  <!-- dot at stuck -->
+  <circle cx="940" cy="340" r="7" fill="#7A2418" opacity="0.85" filter="url(#warpD)"/>
+
+  <!-- labels on lines -->
+  <rect x="950" y="180" width="88" height="22" fill="#4E6040" opacity="0.13" rx="2"/>
+  <text x="994" y="195" font-family="Georgia,serif" font-size="12.5" font-weight="bold" fill="#3E5030">bounces back</text>
+
+  <rect x="950" y="325" width="105" height="22" fill="#7A2418" opacity="0.13" rx="2"/>
+  <text x="1002" y="340" font-family="Georgia,serif" font-size="12.5" font-weight="bold" fill="#7A2418">stays low</text>
+
+  <!-- annotation arrow area — "cognitive debt" label -->
+  <line x1="730" y1="340" x2="730" y2="195" stroke="#7A2418" stroke-width="1.2" stroke-dasharray="4,4" opacity="0.50"/>
+  <text x="742" y="275" font-family="Georgia,serif" font-size="12" fill="#7A2418" opacity="0.80">cognitive</text>
+  <text x="742" y="291" font-family="Georgia,serif" font-size="12" fill="#7A2418" opacity="0.80">debt</text>
+
+  <!-- legend -->
+  <line x1="200" y1="488" x2="235" y2="488" stroke="#4E6040" stroke-width="3" stroke-linecap="round" opacity="0.88"/>
+  <text x="242" y="493" font-family="Palatino,Georgia,serif" font-size="12" fill="#3E2810" opacity="0.80">search-engine / unaided group</text>
+  <line x1="560" y1="488" x2="595" y2="488" stroke="#7A2418" stroke-width="3" stroke-linecap="round" opacity="0.88"/>
+  <text x="602" y="493" font-family="Palatino,Georgia,serif" font-size="12" fill="#3E2810" opacity="0.80">ChatGPT group (former users, tool removed)</text>
+
+  <!-- source -->
+  <text x="600" y="516" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="11" font-style="italic" fill="#2A1608" opacity="0.58">Kosmyna et al. (2025), MIT Media Lab — preprint, not yet peer-reviewed; 54 participants, one task.</text>
+</svg>

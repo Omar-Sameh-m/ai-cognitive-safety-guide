@@ -1,0 +1,90 @@
+<svg viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- canvas linen texture -->
+    <filter id="canvasP" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.08" numOctaves="5" seed="22" result="linen"/>
+      <feColorMatrix in="linen" type="matrix" values="0 0 0 0 0.13  0 0 0 0 0.10  0 0 0 0 0.07  0 0 0 0.28 0" result="linenTinted"/>
+      <feComposite in="linenTinted" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <!-- crackle -->
+    <filter id="crackleP">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65 0.45" numOctaves="4" seed="31" result="cracks"/>
+      <feColorMatrix in="cracks" type="matrix" values="0 0 0 0 0.08  0 0 0 0 0.05  0 0 0 0 0.03  0 0 0 0.12 0" result="crackTinted"/>
+      <feComposite in="crackTinted" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <!-- paint warp -->
+    <filter id="warpP">
+      <feTurbulence type="turbulence" baseFrequency="0.022 0.036" numOctaves="3" seed="44" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="3.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <!-- vignette -->
+    <radialGradient id="vigP" cx="50%" cy="48%" r="70%">
+      <stop offset="45%" stop-color="#2C1A0A" stop-opacity="0"/>
+      <stop offset="88%" stop-color="#1A0D04" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0D0602" stop-opacity="0.65"/>
+    </radialGradient>
+    <!-- paper ground -->
+    <linearGradient id="groundP" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%"   stop-color="#E8D9B0"/>
+      <stop offset="35%"  stop-color="#D9C890"/>
+      <stop offset="70%"  stop-color="#C9B478"/>
+      <stop offset="100%" stop-color="#B89A58"/>
+    </linearGradient>
+    <!-- safe bar: muted sage -->
+    <linearGradient id="safeBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#5C7A50"/>
+      <stop offset="100%" stop-color="#3E5436"/>
+    </linearGradient>
+    <!-- danger bar: iron oxide red -->
+    <linearGradient id="dangerBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#8B3020"/>
+      <stop offset="100%" stop-color="#5E1A0C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ground coat -->
+  <rect width="1200" height="520" fill="url(#groundP)"/>
+  <rect width="1200" height="520" fill="url(#groundP)" filter="url(#canvasP)" opacity="0.9"/>
+  <rect width="1200" height="520" filter="url(#crackleP)" fill="transparent"/>
+  <rect width="1200" height="520" fill="url(#vigP)"/>
+
+  <!-- frame -->
+  <rect x="22" y="22" width="1156" height="476" fill="none" stroke="#6B3A1A" stroke-width="2.5" rx="1" filter="url(#warpP)" opacity="0.8"/>
+  <rect x="31" y="31" width="1138" height="458" fill="none" stroke="#8B5020" stroke-width="1" rx="1" opacity="0.5"/>
+
+  <!-- title -->
+  <text x="600" y="72" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="26" font-weight="bold" fill="#1E1008">The Physician Study</text>
+  <text x="600" y="98" text-anchor="middle" font-family="Palatino,'Book Antiqua',Georgia,serif" font-style="italic" font-size="14.5" fill="#3E2810" opacity="0.82">44 physicians, 264 diagnostic cases — split into two groups</text>
+
+  <!-- horizontal baseline -->
+  <line x1="200" y1="400" x2="1000" y2="400" stroke="#2A1608" stroke-width="1.5" opacity="0.5" filter="url(#warpP)"/>
+
+  <!-- LEFT BAR — safe AI advice, 84.9% -->
+  <rect x="270" y="173" width="200" height="227" fill="url(#safeBar)" rx="3" filter="url(#warpP)" opacity="0.90"/>
+  <rect x="270" y="173" width="200" height="227" filter="url(#crackleP)" fill="transparent"/>
+
+  <!-- RIGHT BAR — erroneous AI advice, 73.3% -->
+  <rect x="730" y="238" width="200" height="162" fill="url(#dangerBar)" rx="3" filter="url(#warpP)" opacity="0.90"/>
+  <rect x="730" y="238" width="200" height="162" filter="url(#crackleP)" fill="transparent"/>
+
+  <!-- BIG NUMBERS — the thing that can't be missed -->
+  <text x="370" y="156" text-anchor="middle" font-family="Georgia,serif" font-size="48" font-weight="bold" fill="#1E3018" opacity="0.92">84.9%</text>
+  <text x="830" y="222" text-anchor="middle" font-family="Georgia,serif" font-size="48" font-weight="bold" fill="#3E0C08" opacity="0.92">73.3%</text>
+
+  <!-- difference callout -->
+  <line x1="470" y1="290" x2="730" y2="290" stroke="#4A2810" stroke-width="1.2" stroke-dasharray="5,4" opacity="0.45" filter="url(#warpP)"/>
+  <text x="600" y="282" text-anchor="middle" font-family="Georgia,serif" font-size="13.5" font-weight="bold" fill="#7A2418" opacity="0.85">−11.6 percentage points</text>
+  <text x="600" y="300" text-anchor="middle" font-family="Palatino,Georgia,serif" font-style="italic" font-size="12" fill="#3E2810" opacity="0.72">diagnostic reasoning accuracy</text>
+
+  <!-- bar labels -->
+  <text x="370" y="425" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#1E3018">AI gave correct advice</text>
+  <text x="830" y="425" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#5E1A0C">AI gave subtly wrong advice</text>
+
+  <!-- sub-note: experience gap -->
+  <rect x="300" y="450" width="600" height="46" fill="#2A1608" opacity="0.10" rx="3" filter="url(#warpP)"/>
+  <text x="600" y="469" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="12.5" fill="#2A1608" opacity="0.82">Physicians with more experience dropped 16.6 points; less experienced dropped 9.1 points.</text>
+  <text x="600" y="486" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="12.5" fill="#2A1608" font-weight="bold" opacity="0.85">Experience made the drop larger, not smaller.</text>
+
+  <!-- source -->
+  <text x="600" y="510" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="11" font-style="italic" fill="#2A1608" opacity="0.60">Randomized clinical trial; all physicians had completed AI-literacy training beforehand.</text>
+</svg>

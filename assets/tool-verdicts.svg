@@ -1,0 +1,97 @@
+<svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="canvasT" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.08" numOctaves="5" seed="19" result="l"/>
+      <feColorMatrix in="l" type="matrix" values="0 0 0 0 0.13  0 0 0 0 0.09  0 0 0 0 0.06  0 0 0 0.26 0" result="t"/>
+      <feComposite in="t" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="crackleT">
+      <feTurbulence type="fractalNoise" baseFrequency="0.68 0.48" numOctaves="4" seed="27" result="c"/>
+      <feColorMatrix in="c" type="matrix" values="0 0 0 0 0.07  0 0 0 0 0.04  0 0 0 0 0.02  0 0 0 0.10 0" result="ct"/>
+      <feComposite in="ct" in2="SourceGraphic" operator="over"/>
+    </filter>
+    <filter id="warpT">
+      <feTurbulence type="turbulence" baseFrequency="0.022 0.036" numOctaves="3" seed="12" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <radialGradient id="vigT" cx="50%" cy="48%" r="70%">
+      <stop offset="45%" stop-color="#2C1A0A" stop-opacity="0"/>
+      <stop offset="88%" stop-color="#1A0D04" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#0D0602" stop-opacity="0.62"/>
+    </radialGradient>
+    <linearGradient id="groundT" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%"   stop-color="#E8D9B0"/>
+      <stop offset="40%"  stop-color="#D9C890"/>
+      <stop offset="100%" stop-color="#B89A58"/>
+    </linearGradient>
+    <!-- disputed: muted sage -->
+    <linearGradient id="dispBadge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5C6B50"/>
+      <stop offset="100%" stop-color="#3E4D36"/>
+    </linearGradient>
+    <!-- confirmed loss: iron oxide -->
+    <linearGradient id="lossBadge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7A2418"/>
+      <stop offset="100%" stop-color="#541409"/>
+    </linearGradient>
+    <!-- shift: ochre/amber -->
+    <linearGradient id="shiftBadge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B6030"/>
+      <stop offset="100%" stop-color="#5E3C14"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="420" fill="url(#groundT)"/>
+  <rect width="1200" height="420" fill="url(#groundT)" filter="url(#canvasT)" opacity="0.9"/>
+  <rect width="1200" height="420" filter="url(#crackleT)" fill="transparent"/>
+  <rect width="1200" height="420" fill="url(#vigT)"/>
+  <rect x="22" y="22" width="1156" height="376" fill="none" stroke="#6B3A1A" stroke-width="2.5" rx="1" filter="url(#warpT)" opacity="0.8"/>
+
+  <!-- title -->
+  <text x="600" y="66" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="26" font-weight="bold" fill="#1E1008">Three Tools, Three Verdicts</text>
+  <text x="600" y="91" text-anchor="middle" font-family="Palatino,'Book Antiqua',Georgia,serif" font-style="italic" font-size="14" fill="#3E2810" opacity="0.82">What history already learned when people handed off thinking to a machine</text>
+
+  <!-- CARD 1: Calculator -->
+  <rect x="100" y="120" width="280" height="220" fill="#D8C890" opacity="0.30" rx="5" filter="url(#warpT)"/>
+  <!-- icon: calculator glyph, simple -->
+  <rect x="170" y="138" width="140" height="96" fill="#C8B880" opacity="0.45" rx="4" stroke="#4A2810" stroke-width="1.5" filter="url(#warpT)"/>
+  <text x="240" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#2A1608" opacity="0.55">∑</text>
+  <text x="240" y="205" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#2A1608" opacity="0.50">1970s classrooms</text>
+
+  <text x="240" y="256" text-anchor="middle" font-family="Georgia,serif" font-size="19" font-weight="bold" fill="#1E1008">The Calculator</text>
+
+  <!-- verdict badge -->
+  <rect x="155" y="272" width="170" height="34" fill="url(#dispBadge)" rx="4" filter="url(#warpT)" opacity="0.88"/>
+  <rect x="155" y="272" width="170" height="34" filter="url(#crackleT)" fill="transparent"/>
+  <text x="240" y="293" text-anchor="middle" font-family="Georgia,serif" font-size="13.5" font-weight="bold" fill="#D4C8A0" letter-spacing="1.5">DISPUTED</text>
+  <text x="240" y="318" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="11.5" fill="#3E2810" opacity="0.72">No reliable loss found</text>
+
+  <!-- CARD 2: GPS -->
+  <rect x="460" y="120" width="280" height="220" fill="#D8C890" opacity="0.30" rx="5" filter="url(#warpT)"/>
+  <rect x="530" y="138" width="140" height="96" fill="#C8B880" opacity="0.45" rx="4" stroke="#4A2810" stroke-width="1.5" filter="url(#warpT)"/>
+  <text x="600" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#2A1608" opacity="0.55">◉</text>
+  <text x="600" y="205" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#2A1608" opacity="0.50">2000s navigation</text>
+
+  <text x="600" y="256" text-anchor="middle" font-family="Georgia,serif" font-size="19" font-weight="bold" fill="#1E1008">GPS Navigation</text>
+
+  <rect x="520" y="272" width="160" height="34" fill="url(#lossBadge)" rx="4" filter="url(#warpT)" opacity="0.88"/>
+  <rect x="520" y="272" width="160" height="34" filter="url(#crackleT)" fill="transparent"/>
+  <text x="600" y="293" text-anchor="middle" font-family="Georgia,serif" font-size="13.5" font-weight="bold" fill="#D4C8A0" letter-spacing="1.5">CONFIRMED LOSS</text>
+  <text x="600" y="318" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="11.5" fill="#3E2810" opacity="0.72">Spatial memory measurably eroded</text>
+
+  <!-- CARD 3: Search -->
+  <rect x="820" y="120" width="280" height="220" fill="#D8C890" opacity="0.30" rx="5" filter="url(#warpT)"/>
+  <rect x="890" y="138" width="140" height="96" fill="#C8B880" opacity="0.45" rx="4" stroke="#4A2810" stroke-width="1.5" filter="url(#warpT)"/>
+  <text x="960" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#2A1608" opacity="0.55">⌕</text>
+  <text x="960" y="205" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#2A1608" opacity="0.50">2011, Google Effect</text>
+
+  <text x="960" y="256" text-anchor="middle" font-family="Georgia,serif" font-size="19" font-weight="bold" fill="#1E1008">Search Engines</text>
+
+  <rect x="875" y="272" width="170" height="34" fill="url(#shiftBadge)" rx="4" filter="url(#warpT)" opacity="0.88"/>
+  <rect x="875" y="272" width="170" height="34" filter="url(#crackleT)" fill="transparent"/>
+  <text x="960" y="293" text-anchor="middle" font-family="Georgia,serif" font-size="13.5" font-weight="bold" fill="#D4C8A0" letter-spacing="1.5">CONFIRMED SHIFT</text>
+  <text x="960" y="318" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="11.5" fill="#3E2810" opacity="0.72">Memory restructured, not erased</text>
+
+  <!-- footer rule -->
+  <text x="600" y="384" text-anchor="middle" font-family="Palatino,Georgia,serif" font-size="12.5" font-style="italic" fill="#2A1608" opacity="0.68">The pattern: offloading costs you when there's no separate practice loop left to keep the skill alive.</text>
+</svg>
